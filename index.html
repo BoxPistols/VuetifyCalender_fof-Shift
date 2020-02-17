@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Vuetify Example Pen Edit Shift</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Material+Icons'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/vuetify@2.2.12/dist/vuetify.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app">
+  <v-app id="inspire">
+    <v-row class="fill-height">
+      <v-col>
+        <v-sheet height="64">
+          <v-toolbar flat color="white">
+            <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
+              Today
+            </v-btn>
+            <v-btn fab text small color="grey darken-2" @click="prev">
+              <v-icon small>mdi-chevron-left</v-icon>
+            </v-btn>
+            <v-btn fab text small color="grey darken-2" @click="next">
+              <v-icon small>mdi-chevron-right</v-icon>
+            </v-btn>
+            <v-toolbar-title>{{ title }}</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-menu bottom right>
+              <template v-slot:activator="{ on }">
+                <v-btn outlined color="grey darken-2" v-on="on">
+                  <span>{{ typeToLabel[type] }}</span>
+                  <v-icon right>mdi-menu-down</v-icon>
+                </v-btn>
+              </template>
+              <v-list>
+                <!--  <v-list-item @click="type = 'day'"> -->
+                <!--  <v-list-item-title>Day</v-list-item-title>
+                </v-list-item>
+<!--                 <v-list-item @click="type = 'week'"> -->
+                <!--                   <v-list-item-title>Week</v-list-item-title>
+                </v-list-item> -->
+                <v-list-item @click="type = 'month'">
+                  <v-list-item-title>Month</v-list-item-title>
+                </v-list-item>
+                <!--                 <v-list-item @click="type = '4day'">
+                  <v-list-item-title>4 days</v-list-item-title>
+                </v-list-item> -->
+              </v-list>
+            </v-menu>
+          </v-toolbar>
+        </v-sheet>
+        <v-sheet height="600">
+          <v-calendar ref="calendar" v-model="focus" color="primary" :events="events" :event-color="getEventColor"
+            :now="today" :type="type" @click:event="showEvent" @click:more="viewDay" @click:date="viewDay"
+            @change="updateRange"></v-calendar>
+          <v-menu v-model="selectedOpen" :close-on-content-click="false" :activator="selectedElement" offset-x draggable>
+            <v-card color="grey lighten-4" min-width="350px" flat>
+              <v-toolbar :color="selectedEvent.color" dark>
+
+                <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
+
+                <v-spacer></v-spacer>
+
+                <!--   <v-btn icon>
+                  <v-icon>
+                    mdi-pencil
+                  </v-icon>
+                </v-btn>
+ -->
+
+                <select name="" id="">
+                  <option value="1">病棟A</option>
+                  <option value="２">病棟B</option>
+                  <option value="３">病棟C</option>
+                </select>
+
+                <v-spacer></v-spacer>
+                <v-btn icon>
+                  <span>上級</span>
+                  <!--  <v-icon>mdi-heart</v-icon> -->
+                </v-btn>
+                <v-btn icon>
+                  <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+              </v-toolbar>
+              <v-card-text>
+                <span v-html="selectedEvent.details"></span>
+              </v-card-text>
+
+              <v-card-actions>
+
+                <v-btn icon>
+                  <v-icon>
+                    mdi-pencil
+                  </v-icon>
+                </v-btn>
+
+                <v-card-text>
+
+                  <v-row justify="space-around">
+                    <v-col cols="４">
+                      <v-select v-model="work" :items="works" label="work"></v-select>
+                    </v-col>
+                  </v-row>
+
+                  <!--                   <select name="" id="">
+                    <option value="0">公休</option>
+                    <option value="1">日勤 08:00 - 18:00</option>
+                    <option value="２">夜勤 22:00 - 06:00</option>
+                    <option value="３">準夜勤 19:00 - 24:00</option>
+                  </select>
+ -->
+                </v-card-text>
+
+                <v-btn text-color="secondary" @click="selectedOpen = false">
+                  Cancel
+                </v-btn>
+                <v-btn text-color="primary" @click="selectedOpen = false">
+                  Save
+                </v-btn>
+              </v-card-actions>
+
+            </v-card>
+          </v-menu>
+        </v-sheet>
+      </v-col>
+    </v-row>
+  </v-app>
+</div>
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vuetify@2.2.12/dist/vuetify.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
