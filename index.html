@@ -61,9 +61,11 @@
 
               <v-card color="grey lighten-4" min-width="300px" flat>
                 <v-toolbar :color="selectedEvent.color" dark>
-                  <v-toolbar-title v-html="selectedEvent.icon"></v-toolbar-title>
+
                   <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
+                  <v-spacer></v-spacer>
                   <v-toolbar-title v-html="selectedEvent.belong" class="ml-4"></v-toolbar-title>
+                  <v-spacer></v-spacer>
                   <v-toolbar-title v-html="selectedEvent.class" class="ml-4"></v-toolbar-title>
 
                   <v-spacer></v-spacer>
@@ -83,6 +85,9 @@
                       mdi-pencil
                     </v-icon>
                   </v-btn>
+
+                  <v-spacer></v-spacer>
+
                   <v-card-text>
                     <v-row justify="space-around">
                       <v-col cols="４">
