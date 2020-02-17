@@ -1,20 +1,35 @@
 .v-event.v-event-start.v-event-end {
   width: auto;
-  display: inline-flex;
+  display: inline-flex !important;
   min-width: auto;
   width: auto !important;
-  padding: 2px 4px 2px 0;
+  max-width: fit-content!important;
+  padding: 1px 4px 3px 0;
   margin-right: 4px;
-  border-radius: 3px;
+  border-radius: 2px;
   box-shadow: 1px 2px 2px #ccc;
+  background-color: gray;
   transition: 0.2s;
 
   &:hover {
     box-shadow: none;
-    transform: scale(1.1, 1.1);
+    transform: scale(1.2, 1.2);
     box-shadow: 1px 4px 4px #eee;
   }
 }
+
+// .v-calendar .v-event,.v-calendar .v-event-more {
+//     position: relative;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     white-space: nowrap;
+//     font-size: 12px;
+//     cursor: pointer;
+//     z-index: 1;
+//     display: inline-block;
+//     width: auto;
+//     max-width: fit-content!important;
+// }
 
 .v-input.v-input--is-label-active.v-input--is-dirty.theme--light.v-text-field.v-text-field--is-booted.v-select {
   max-width: 200px;

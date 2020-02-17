@@ -8,7 +8,7 @@
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Material+Icons'>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/vuetify@2.2.12/dist/vuetify.min.css'>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -24,26 +24,77 @@
                 <v-sheet height="64">
                   <v-toolbar flat color="white">
 
-                    <v-btn outlined class="mr-4" color="grey darken-2" @click="prev">Prev</v-btn>
-                    <v-btn fab text small color="grey darken-2" @click="prev">
+                    <v-btn outlined class="mr-5" color="grey darken-2" @click="prev">Prev</v-btn>
+
+                    <v-btn fab text small class="ml-4" color="grey darken-2" @click="prev">
                       <v-icon small>mdi-chevron-left</v-icon>
                     </v-btn>
 
                     <v-toolbar-title>{{ title }}</v-toolbar-title>
 
-                    <v-btn fab text small color="grey darken-2" @click="next">
+                    <v-btn fab text small color="grey darken-2" class="mr-5" @click="next">
                       <v-icon small>mdi-chevron-right</v-icon>
                     </v-btn>
-                    <v-btn outlined class="ml-5" color="grey darken-2" @click="setToday">Today</v-btn>
 
                     <v-spacer></v-spacer>
 
-                    <v-menu bottom right>
-                      <template v-slot:activator="{ on }">
-                        <v-btn outlined class="mr-4" color="grey darken-2" @click="next">Next</v-btn>
-                      </template>
+                    <v-btn outlined class="ml-1" color="grey darken-2" @click="setToday">Today</v-btn>
 
-                    </v-menu>
+                    <v-spacer></v-spacer>
+
+                    <v-row justify="center">
+                      <v-dialog v-model="dialog" persistent max-width="800">
+                        <template v-slot:activator="{ on }">
+                          <v-btn outlined class="ml-5" color="grey darken-2" v-on="on">new event</v-btn>
+
+                        </template>
+                        <v-card>
+                          <v-card-title class="headline">新しいイベント</v-card-title>
+                          <v-card-text>
+
+                            <v-row>
+
+                              <v-col cols="12" sm="6" class="my-2 px-1">
+                                <v-date-picker locale="ja-jp" ref="picker" v-model="date" :picker-date.sync="pickerDate" full-width></v-date-picker>
+                              </v-col>
+
+                              <v-col cols="12" sm="6" class="my-2 px-1">
+                                <!-- <div class="title">Month news ({{ pickerDate || 'change month...' }})</div> -->
+                                <div class="title">メンバー</div>
+                                <!-- <div class="subheading">メンバー</div> -->
+                                <select name="" id="">
+                                  <option value="" v-for="name in names">{{ name }}</option>
+                                </select>
+
+                                <div class="title">シフト種</div>
+                                <!-- <div class="subheading">メンバー</div> -->
+                                <select name="" id="">
+                                  <option value="" v-for="work in works">{{ work }}</option>
+                                </select>
+                                <!-- <ul class="ma-4">
+                                  <li v-for="note in notes" :key="note">{{ note }}</li>
+                                </ul> -->
+                              </v-col>
+
+                            </v-row>
+
+                          </v-card-text>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green darken-1" text @click="dialog = false">キャンセル</v-btn>
+                            <v-btn color="green darken-1" text @click="dialog = false">イベント追加</v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+
+                      <v-spacer></v-spacer>
+
+                      <v-menu bottom right>
+                        <template v-slot:activator="{ on }">
+                          <v-btn outlined class="mr-4" color="grey darken-2" @click="next">Next</v-btn>
+                        </template>
+
+                      </v-menu>
                   </v-toolbar>
                 </v-sheet>
               </v-col>
@@ -53,7 +104,8 @@
           <!-- Calendar -->
           <v-sheet height="640">
             <!-- event function  -->
-            <v-calendar locale="ja-jp" :day-format="timestamp => new Date(timestamp.date).getDate()" :month-format="timestamp => (new Date(timestamp.date).getMonth() + 1) + ' /'" ref="calendar" v-model="focus" color="primary" :events="events" :event-color="getEventColor" :now="today" :type="type" @click:event="showEvent" @change="updateRange">
+            <v-calendar locale="ja-jp" :day-format="timestamp => new Date(timestamp.date).getDate()" :month-format="timestamp => (new Date(timestamp.date).getMonth() + 1) + ' /'" ref="calendar" v-model="focus" color="primary" :events="events"
+              :event-color="getEventColor" :now="today" :type="type" @click:event="showEvent" @change="updateRange">
             </v-calendar>
 
             <!-- modal content -->

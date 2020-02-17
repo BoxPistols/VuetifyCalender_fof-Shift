@@ -2,6 +2,19 @@ new Vue({
   el: "#app",
   vuetify: new Vuetify(),
   data: () => ({
+    // modal
+    dialog: false,
+    // date picker
+    date: new Date().toISOString().substr(0, 10),
+    pickerDate: null,
+    // notes: [],
+    // allNotes: [
+    //   "新しいイベント",
+    //   "条件の表示",
+    //   "あのねのね",
+    //   "Global warming discussion cancelled",
+    //   "Company changed its location"
+    // ],
     focus: "",
     type: "month",
     typeToLabel: {
@@ -37,6 +50,10 @@ new Vue({
   }),
 
   computed: {
+    // date picker
+    functionEvents() {
+      return this.month ? this.monthFunctionEvents : this.dateFunctionEvents;
+    },
     title() {
       const {start, end} = this;
       if (!start || !end) {
@@ -72,15 +89,33 @@ new Vue({
       });
     }
   },
-
+  watch: {
+    // date picker
+    pickerDate(val) {
+      this.notes = [
+        this.allNotes[Math.floor(Math.random() * 5)],
+        this.allNotes[Math.floor(Math.random() * 5)],
+        this.allNotes[Math.floor(Math.random() * 5)]
+      ].filter((value, index, self) => self.indexOf(value) === index);
+    }
+  },
   mounted() {
     this.$refs.calendar.checkChange();
   },
   methods: {
-    newEvent: {
-      function() {
-        alert();
-      }
+    // date picker
+    dateFunctionEvents(date) {
+      const [, , day] = date.split("-");
+      if ([12, 17, 28].includes(parseInt(day, 10))) return true;
+      if ([1, 19, 22].includes(parseInt(day, 10))) return ["red", "#00f"];
+      return false;
+    },
+    monthFunctionEvents(date) {
+      const month = parseInt(date.split("-")[1], 10);
+      if ([1, 3, 7].includes(month)) return true;
+      if ([2, 5, 12].includes(month))
+        return ["error", "purple", "rgba(0, 128, 0, 0.5)"];
+      return false;
     },
     viewDay({date}) {
       this.focus = date;
