@@ -20,11 +20,12 @@
           <!-- // head menu -->
           <v-container fluid>
             <v-row>
-              <v-col cols="">
+              <v-col class="d-flex justify-space-around" cols="12">
+
                 <v-sheet height="64">
                   <v-toolbar flat color="white">
 
-                    <v-btn outlined class="mr-5" color="blue-grey lighten-3" @click="prev">前月</v-btn>
+                    <v-btn outlined class="mr-3" color="blue-grey lighten-3" @click="prev">前月</v-btn>
 
                     <v-btn fab text small class="ml-4" color="grey darken-2" @click="prev">
                       <v-icon small>mdi-chevron-left</v-icon>
@@ -38,12 +39,12 @@
 
                     <v-btn outlined class="ml-1" color="orange darken-3" @click="setToday">今月</v-btn>
 
-                    <v-dialog v-model="dialog" persistent max-width="800">
+                    <v-dialog v-model="dialog" persistent max-width="960">
                       <template v-slot:activator="{ on }">
-                        <v-btn outlined class="ml-5" color="cyan darken-2" v-on="on">追加シフト</v-btn>
+                        <v-btn outlined class="ml-5 mr-5" color="cyan darken-2" v-on="on">追加シフト</v-btn>
                       </template>
                       <v-card class="pl-4 pt-4">
-                        <v-card-title class="headline">追加シフト</v-card-title>
+                        <v-card-title class="headline">追加</v-card-title>
                         <v-card-text>
                           <div class="subheading">日付指定</div>
 
@@ -76,7 +77,7 @@
 
                     <v-menu bottom right>
                       <template v-slot:activator="{ on }">
-                        <v-btn outlined class="mr-4" color="blue-grey lighten-3" @click="next">次月</v-btn>
+                        <v-btn outlined class="ml-4" color="blue-grey lighten-3" @click="next">次月</v-btn>
                       </template>
 
                     </v-menu>
@@ -135,10 +136,10 @@
                       </v-col>
                     </v-row>
                   </v-card-text>
-                  <v-btn text-color="secondary" @click="selectedOpen = false">
+                  <v-btn text-color="secondary" outlined color="grey" @click="selectedOpen = false">
                     Cancel
                   </v-btn>
-                  <v-btn text-color="primary" @click="selectedOpen = false">
+                  <v-btn text-color="primary" class="ml-2" outlined color="teal" @click="selectedOpen = false">
                     Save
                   </v-btn>
                 </v-card-actions>
