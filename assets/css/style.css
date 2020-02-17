@@ -1,3 +1,7 @@
+*:focus {
+  outline: none;
+}
+
 .v-event.v-event-start.v-event-end {
   width: auto;
   display: inline-flex !important;

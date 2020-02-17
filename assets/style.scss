@@ -1,3 +1,7 @@
+*:focus {
+  outline: none;
+}
+
 .v-event.v-event-start.v-event-end {
   width: auto;
   display: inline-flex !important;
@@ -17,19 +21,6 @@
     box-shadow: 1px 4px 4px #eee;
   }
 }
-
-// .v-calendar .v-event,.v-calendar .v-event-more {
-//     position: relative;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//     white-space: nowrap;
-//     font-size: 12px;
-//     cursor: pointer;
-//     z-index: 1;
-//     display: inline-block;
-//     width: auto;
-//     max-width: fit-content!important;
-// }
 
 .v-input.v-input--is-label-active.v-input--is-dirty.theme--light.v-text-field.v-text-field--is-booted.v-select {
   max-width: 200px;

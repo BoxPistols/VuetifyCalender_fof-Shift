@@ -24,7 +24,7 @@
                 <v-sheet height="64">
                   <v-toolbar flat color="white">
 
-                    <v-btn outlined class="mr-5" color="grey darken-2" @click="prev">Prev</v-btn>
+                    <v-btn outlined class="mr-5" color="blue-grey lighten-3" @click="prev">前月</v-btn>
 
                     <v-btn fab text small class="ml-4" color="grey darken-2" @click="prev">
                       <v-icon small>mdi-chevron-left</v-icon>
@@ -36,65 +36,50 @@
                       <v-icon small>mdi-chevron-right</v-icon>
                     </v-btn>
 
+                    <v-btn outlined class="ml-1" color="orange darken-3" @click="setToday">今月</v-btn>
+
+                    <v-dialog v-model="dialog" persistent max-width="800">
+                      <template v-slot:activator="{ on }">
+                        <v-btn outlined class="ml-5" color="cyan darken-2" v-on="on">追加シフト</v-btn>
+                      </template>
+                      <v-card class="pl-4 pt-4">
+                        <v-card-title class="headline">追加シフト</v-card-title>
+                        <v-card-text>
+                          <div class="subheading">日付指定</div>
+
+                          <v-row>
+                            <v-col cols="12" sm="6" class="my-2 px-1">
+                              <v-date-picker locale="ja-jp" ref="picker" v-model="date" :picker-date.sync="pickerDate" full-width></v-date-picker>
+                            </v-col>
+
+                            <v-col cols="12" sm="6" class="my-2 pl-4 px-1">
+                              <div class="title">スタッフ</div>
+                              <v-col class="d-flex" cols="12" sm="6">
+                                <v-select :items="names" label="スタッフ選定"></v-select>
+                              </v-col>
+                              <div class="title mt-4">シフト種</div>
+                              <v-col class="d-flex" cols="12" sm="6">
+                                <v-select :items="works" label="シフト種選定"></v-select>
+                              </v-col>
+                            </v-col>
+
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="green darken-1" text @click="dialog = false">キャンセル</v-btn>
+                          <v-btn color="green darken-1" text @click="dialog = false">イベント追加</v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+
                     <v-spacer></v-spacer>
 
-                    <v-btn outlined class="ml-1" color="grey darken-2" @click="setToday">Today</v-btn>
+                    <v-menu bottom right>
+                      <template v-slot:activator="{ on }">
+                        <v-btn outlined class="mr-4" color="blue-grey lighten-3" @click="next">次月</v-btn>
+                      </template>
 
-                    <v-spacer></v-spacer>
-
-                    <v-row justify="center">
-                      <v-dialog v-model="dialog" persistent max-width="800">
-                        <template v-slot:activator="{ on }">
-                          <v-btn outlined class="ml-5" color="grey darken-2" v-on="on">new event</v-btn>
-
-                        </template>
-                        <v-card>
-                          <v-card-title class="headline">新しいイベント</v-card-title>
-                          <v-card-text>
-
-                            <v-row>
-
-                              <v-col cols="12" sm="6" class="my-2 px-1">
-                                <v-date-picker locale="ja-jp" ref="picker" v-model="date" :picker-date.sync="pickerDate" full-width></v-date-picker>
-                              </v-col>
-
-                              <v-col cols="12" sm="6" class="my-2 px-1">
-                                <!-- <div class="title">Month news ({{ pickerDate || 'change month...' }})</div> -->
-                                <div class="title">メンバー</div>
-                                <!-- <div class="subheading">メンバー</div> -->
-                                <select name="" id="">
-                                  <option value="" v-for="name in names">{{ name }}</option>
-                                </select>
-
-                                <div class="title">シフト種</div>
-                                <!-- <div class="subheading">メンバー</div> -->
-                                <select name="" id="">
-                                  <option value="" v-for="work in works">{{ work }}</option>
-                                </select>
-                                <!-- <ul class="ma-4">
-                                  <li v-for="note in notes" :key="note">{{ note }}</li>
-                                </ul> -->
-                              </v-col>
-
-                            </v-row>
-
-                          </v-card-text>
-                          <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="green darken-1" text @click="dialog = false">キャンセル</v-btn>
-                            <v-btn color="green darken-1" text @click="dialog = false">イベント追加</v-btn>
-                          </v-card-actions>
-                        </v-card>
-                      </v-dialog>
-
-                      <v-spacer></v-spacer>
-
-                      <v-menu bottom right>
-                        <template v-slot:activator="{ on }">
-                          <v-btn outlined class="mr-4" color="grey darken-2" @click="next">Next</v-btn>
-                        </template>
-
-                      </v-menu>
+                    </v-menu>
                   </v-toolbar>
                 </v-sheet>
               </v-col>
