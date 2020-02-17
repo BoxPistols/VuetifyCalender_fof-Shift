@@ -6,9 +6,6 @@ new Vue({
     type: "month",
     typeToLabel: {
       month: "Month"
-      // week: 'Week',
-      // day: 'Day',
-      // '4day': '4 Days',
     },
     start: null,
     end: null,
@@ -26,7 +23,9 @@ new Vue({
       "grey darken-1"
     ],
     names: ["佐藤真弓", "吉田はるか", "山本聡子"],
-    work: "accent",
+    classes: ["上級", "中級", "初級"],
+    belongs: ["A病棟", "B病棟", "C病棟"],
+    work: "希望",
     works: [
       "公休",
       "半休",
@@ -78,6 +77,11 @@ new Vue({
     this.$refs.calendar.checkChange();
   },
   methods: {
+    newEvent: {
+      function() {
+        alert();
+      }
+    },
     viewDay({date}) {
       this.focus = date;
       this.type = "day";
@@ -116,17 +120,19 @@ new Vue({
       const min = new Date(`${start.date}T00:00:00`);
       const max = new Date(`${end.date}T23:59:59`);
       const days = (max.getTime() - min.getTime()) / 86400000;
-      const eventCount = this.rnd(days, days + 20);
+      const eventCount = this.rnd(days, days + 50);
 
       for (let i = 0; i < eventCount; i++) {
-        const allDay = this.rnd(0, 3) === 0;
+        const allDay = this.rnd(0) === 0;
         const firstTimestamp = this.rnd(min.getTime(), max.getTime());
         const first = new Date(firstTimestamp - (firstTimestamp % 900000));
-        const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000;
+        const secondTimestamp = this.rnd(2, allDay ? 8 : 4) * 900000;
         const second = new Date(first.getTime() + secondTimestamp);
 
         events.push({
           name: this.names[this.rnd(0, this.names.length - 1)],
+          class: this.classes[this.rnd(0, this.classes.length - 1)],
+          belong: this.belongs[this.rnd(0, this.belongs.length - 1)],
           start: this.formatDate(first, !allDay),
           end: this.formatDate(second, !allDay),
           color: this.colors[this.rnd(0, this.colors.length - 1)]
