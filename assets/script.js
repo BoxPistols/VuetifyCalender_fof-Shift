@@ -35,20 +35,20 @@ new Vue({
       "orange",
       "grey darken-1"
     ],
-    names: ["佐藤真弓", "吉田はるか", "山本聡子"],
-    classes: ["上級", "中級", "初級"],
-    belongs: ["A病棟", "B病棟", "C病棟"],
+    names: ["坂本春香", "渡辺里佳", "渡辺里佳", "原田舞", "加納千代","石田健一", "佐々木結衣", "宮沢明美", "中島幹"],
+    classes: ["看護師", "准看護師", "看護補助者"],
+    belongs: ["1A", "1B", "1C", "2A", "2B", "2C", "3A", "3B", "3C", "4A", "4B", "4C", "5A", "5B", "5C"],
     work: "希望",
     works: [
+      "日勤 8:30 - 17:30",
+      "準夜 16:30 - 23:30",
+      "深夜 23:30 - 8:30",
+      "早出 7:00 - 16:00",
+      "遅出 12:00 - 21:00",
+      "半休 8:30 - 13:00",
       "公休",
-      "半休",
-      "日勤 08:00 - 18:00",
-      "夜勤 22:00 - 06:00",
-      "準夜勤 19:00 - 24:00",
-      "長期休暇"
     ]
   }),
-
   computed: {
     // date picker
     functionEvents() {
@@ -155,7 +155,7 @@ new Vue({
       const min = new Date(`${start.date}T00:00:00`);
       const max = new Date(`${end.date}T23:59:59`);
       const days = (max.getTime() - min.getTime()) / 86400000;
-      const eventCount = this.rnd(days, days + 50);
+      const eventCount = this.rnd(days, days + 80);
 
       for (let i = 0; i < eventCount; i++) {
         const allDay = this.rnd(0) === 0;
