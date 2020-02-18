@@ -36,7 +36,8 @@ new Vue({
       "grey darken-1"
     ],
     names: ["坂本春香", "渡辺里佳", "渡辺里佳", "原田舞", "加納千代","石田健一", "佐々木結衣", "宮沢明美", "中島幹"],
-    classes: ["看護師", "准看護師", "看護補助者"],
+    classes: ["上級", "中級", "初級"],
+    jobs: ["看護師", "准看護師", "看護"],
     belongs: ["1A", "1B", "1C", "2A", "2B", "2C", "3A", "3B", "3C", "4A", "4B", "4C", "5A", "5B", "5C"],
     work: "希望",
     works: [
@@ -167,6 +168,7 @@ new Vue({
         events.push({
           name: this.names[this.rnd(0, this.names.length - 1)],
           class: this.classes[this.rnd(0, this.classes.length - 1)],
+          job: this.jobs[this.rnd(0, this.jobs.length - 1)],
           belong: this.belongs[this.rnd(0, this.belongs.length - 1)],
           start: this.formatDate(first, !allDay),
           end: this.formatDate(second, !allDay),
