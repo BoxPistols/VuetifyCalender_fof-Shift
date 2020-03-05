@@ -88,10 +88,44 @@
           </v-container>
 
           <!-- Calendar -->
-          <v-sheet height="640">
+          <v-sheet height="960">
             <!-- event function  -->
-            <v-calendar locale="ja-jp" :day-format="timestamp => new Date(timestamp.date).getDate()" :month-format="timestamp => (new Date(timestamp.date).getMonth() + 1) + ' /'" ref="calendar" v-model="focus" color="primary" :events="events"
-              :event-color="getEventColor" :now="today" :type="type" @click:event="showEvent" @change="updateRange">
+            <v-calendar
+              locale="ja-jp"
+              :day-format="timestamp => new Date(timestamp.date).getDate()"
+              :month-format="timestamp => (new Date(timestamp.date).getMonth() + 1) + ' /'"
+              ref="calendar"
+              v-model="focus"
+              :now="today"
+
+
+              :events="events"
+              :event-color="getEventColor"
+
+
+              :type="type"
+              @click:event="showEvent"
+              @change="updateRange">
+              >
+
+              <!--
+
+              :start="start"
+              :end="end"
+              :min-weeks="minWeeks"
+              :max-days="maxDays"
+              :now="now"
+              :dark="dark"
+              :weekdays="weekdays"
+              :first-interval="intervals.first"
+              :interval-minutes="intervals.minutes" :interval-count="intervals.count" :interval-height="intervals.height" :interval-style="intervalStyle" :show-interval-label="showIntervalLabel" :short-intervals="shortIntervals"
+              :short-months="shortMonths" :short-weekdays="shortWeekdays" :color="color" :events="events" :event-overlap-mode="mode" :event-overlap-threshold="45" :event-color="getEventColor"
+              @change="getEvents"
+              @click:event="showEvent"
+              @click:more="viewMore"
+              @click:date="viewDay"
+              @click:add="testEv"
+              -->
             </v-calendar>
 
             <!-- modal content -->

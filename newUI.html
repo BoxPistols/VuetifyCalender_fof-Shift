@@ -33,10 +33,25 @@
         <v-col class="pl-4" sm="10" lg="10">
 
           <v-sheet height="960">
-            <v-calendar ref="calendar" v-model="start" :type="type" :start="start" :end="end" :min-weeks="minWeeks" :max-days="maxDays" :now="now" :dark="dark" :weekdays="weekdays" :first-interval="intervals.first"
+            <v-calendar
+              ref="calendar"
+              v-model="start"
+              :type="type"
+              :start="start"
+              :end="end"
+              :min-weeks="minWeeks"
+              :max-days="maxDays"
+              :now="now"
+              :dark="dark"
+              :weekdays="weekdays"
+              :first-interval="intervals.first"
               :interval-minutes="intervals.minutes" :interval-count="intervals.count" :interval-height="intervals.height" :interval-style="intervalStyle" :show-interval-label="showIntervalLabel" :short-intervals="shortIntervals"
-              :short-months="shortMonths" :short-weekdays="shortWeekdays" :color="color" :events="events" :event-overlap-mode="mode" :event-overlap-threshold="45" :event-color="getEventColor" @change="getEvents" @click:event="showEvent"
-              @click:more="viewMore" @click:date="viewDay" @click:add="testEv">
+              :short-months="shortMonths" :short-weekdays="shortWeekdays" :color="color" :events="events" :event-overlap-mode="mode" :event-overlap-threshold="45" :event-color="getEventColor"
+              @change="getEvents"
+              @click:event="showEvent"            
+              @click:more="viewMore"
+              @click:date="viewDay"
+              @click:add="testEv">
             </v-calendar>
 
             <!-- modal content -->
