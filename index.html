@@ -98,17 +98,22 @@
               v-model="focus"
               :now="today"
 
-
               :events="events"
               :event-color="getEventColor"
 
-
               :type="type"
               @click:event="showEvent"
-              @change="updateRange">
+              @change="updateRange"
+
+              @click:event="showEvent"
+              @change="getEvents"
+              @click:add="testEv"
+              @click:date="viewDay"
+              @click:more="viewMore"
               >
 
               <!--
+
 
               :start="start"
               :end="end"
@@ -119,7 +124,11 @@
               :weekdays="weekdays"
               :first-interval="intervals.first"
               :interval-minutes="intervals.minutes" :interval-count="intervals.count" :interval-height="intervals.height" :interval-style="intervalStyle" :show-interval-label="showIntervalLabel" :short-intervals="shortIntervals"
-              :short-months="shortMonths" :short-weekdays="shortWeekdays" :color="color" :events="events" :event-overlap-mode="mode" :event-overlap-threshold="45" :event-color="getEventColor"
+              :short-months="shortMonths" :short-weekdays="shortWeekdays" :color="color"
+              :events="events"
+              :event-overlap-mode="mode"
+              :event-overlap-threshold="45"
+
               @change="getEvents"
               @click:event="showEvent"
               @click:more="viewMore"

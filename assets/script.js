@@ -340,7 +340,7 @@ new Vue({
     },
     viewDay({date}) {
       this.focus = date;
-      this.type = "day";
+      // this.type = "day";
       // add
       this.dialog = true;
       this.date = date;
