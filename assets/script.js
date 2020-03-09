@@ -279,6 +279,11 @@ new Vue({
       switch (this.type) {
         case "month":
           return `${startMonth} ${startYear}`;
+        // case 'week':
+        // case '4day':
+        //   return `${startMonth} ${startDay} ${startYear} - ${suffixMonth} ${endDay} ${suffixYear}`
+        // case 'day':
+        //   return `${startMonth} ${startDay} ${startYear}`
       }
       return "";
     },
@@ -397,7 +402,7 @@ new Vue({
         let shiftBar = this.shifts[this.rnd(0, this.shifts.length - 1)];
 
         events.push({
-          name: shiftBar + " " + this.names[this.rnd(0, this.names.length - 1)],
+          name: shiftBar + " " +this.names[this.rnd(0, this.names.length - 1)],
           class: this.classes[this.rnd(0, this.classes.length - 1)],
           job: this.jobs[this.rnd(0, this.jobs.length - 1)],
           belong: this.belongs[this.rnd(0, this.belongs.length - 1)],
