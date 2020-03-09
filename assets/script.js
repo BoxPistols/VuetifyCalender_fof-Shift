@@ -279,11 +279,6 @@ new Vue({
       switch (this.type) {
         case "month":
           return `${startMonth} ${startYear}`;
-        // case 'week':
-        // case '4day':
-        //   return `${startMonth} ${startDay} ${startYear} - ${suffixMonth} ${endDay} ${suffixYear}`
-        // case 'day':
-        //   return `${startMonth} ${startDay} ${startYear}`
       }
       return "";
     },
