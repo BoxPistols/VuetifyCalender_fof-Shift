@@ -4,7 +4,7 @@
 
 .v-event.v-event-start.v-event-end {
   width: auto;
-  display: inline-flex !important;
+  /* display: inline-flex !important; */
   min-width: auto;
   width: auto !important;
   max-width: -webkit-fit-content !important;
