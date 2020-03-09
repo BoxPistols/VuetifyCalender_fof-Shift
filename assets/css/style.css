@@ -17,6 +17,7 @@
   background-color: gray;
   transition: 0.2s;
 }
+
 .v-event.v-event-start.v-event-end:hover {
   box-shadow: none;
   transform: scale(1.2, 1.2);
@@ -28,7 +29,6 @@
 }
 
 /* -------------add ---------- */
-
 .controls {
   position: relative;
 }
@@ -131,4 +131,11 @@ button.v-btn.v-btn--depressed.v-btn--fab.v-btn--round.theme--light.v-size--small
   background: #d163f324 !important;
   border-radius: 50%;
   color: #222;
+}
+
+.v-calendar-weekly__head-weekday {
+  font-size: 12px;
+  background: #f3f3ee;
+  border: 1px solid #ccc;
+  margin: -1px -1px 0;
 }

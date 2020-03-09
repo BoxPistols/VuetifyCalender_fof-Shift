@@ -98,7 +98,13 @@
               v-model="focus"
               :now="today"
 
+              :weekdays="weekdays"
+
               :events="events"
+              :events="events"
+              :event-overlap-mode="mode"
+              :event-overlap-threshold="45"
+
               :event-color="getEventColor"
 
               :type="type"
@@ -110,6 +116,7 @@
               @click:add="testEv"
               @click:date="viewDay"
               @click:more="viewMore"
+
               >
 
               <!--

@@ -390,7 +390,7 @@ new Vue({
       const min = new Date(`${start.date}T00:00:00`);
       const max = new Date(`${end.date}T23:59:59`);
       const days = (max.getTime() - min.getTime()) / 86400000;
-      const eventCount = this.rnd(days, days + 80);
+      const eventCount = this.rnd(days, days + 30 * 10);
 
       for (let i = 0; i < eventCount; i++) {
         const allDay = this.rnd(0) === 0;
@@ -399,8 +399,10 @@ new Vue({
         const secondTimestamp = this.rnd(2, allDay ? 8 : 4) * 900000;
         const second = new Date(first.getTime() + secondTimestamp);
 
+        let shiftBar = this.shifts[this.rnd(0, this.shifts.length - 1)];
+
         events.push({
-          name: this.names[this.rnd(0, this.names.length - 1)],
+          name: shiftBar + " " + this.names[this.rnd(0, this.names.length - 1)],
           class: this.classes[this.rnd(0, this.classes.length - 1)],
           job: this.jobs[this.rnd(0, this.jobs.length - 1)],
           belong: this.belongs[this.rnd(0, this.belongs.length - 1)],
